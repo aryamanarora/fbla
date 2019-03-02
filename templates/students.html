@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Students
+{% endblock %}
+
+{% block main %}
+<h1 class="mb-3">Manage Students</h1>
+<form action="{{ url_for('students') }}" method="post" class="form-inline">
+    <div class="form-group mb-2">
+        <input type="text" class="form-control" name="name" placeholder="Student name">
+    </div>
+    <div class="form-group mx-sm-3 mb-2">
+        <input type="number" class="form-control" name="grade" placeholder="Grade">
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary mb-2">Add Student</button>
+    </div>
+</form>
+<h2 class="mb-3">All Students</h2>
+<table class="table table-hover">
+    <thead>
+        <tr class="thead-light">
+            <th>Name</th>
+            <th>Grade</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for entry in entries %}
+        <tr>
+            <td>{{ entry.name }}</td>
+            <td>{{ entry.grade }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
